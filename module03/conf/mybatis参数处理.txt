@@ -142,6 +142,7 @@ Preparing: select * from tbl_employee where id=2 and last_name=?
 		由于全局配置中：jdbcTypeForNull=OTHER；oracle不支持；两种办法
 		1、#{email,jdbcType=OTHER};
 		2、jdbcTypeForNull=NULL
+		    mybatis的全局配置文件
 			<setting name="jdbcTypeForNull" value="NULL"/>
 			
 		
