@@ -238,10 +238,11 @@
 	 
 	 <!-- 两个内置参数：
 	 	不只是方法传递过来的参数可以被用来判断，取值。。。
-	 	mybatis默认还有两个内置参数：
+	 	mybatis默认还有两个内置参数 _parameter 和 _databaseId：
+
 	 	_parameter:代表整个参数
-	 		单个参数：_parameter就是这个参数
-	 		多个参数：参数会被封装为一个map；_parameter就是代表这个map
+	 		单个参数 a ：_parameter就是这个参数 a
+	 		多个参数 ,例如 a 和   b ：参数会被封装为一个map；_parameter就是代表这个map
 	 	
 	 	_databaseId:如果配置了databaseIdProvider标签。
 	 		_databaseId就是代表当前数据库的别名oracle
@@ -249,12 +250,16 @@
 	  
 	  <!--public List<Employee> getEmpsTestInnerParameter(Employee employee);  -->
 	  <select id="getEmpsTestInnerParameter" resultType="per.wsk.entity.Employee">
-	  		<!-- bind：可以将OGNL表达式的值绑定到一个变量中，方便后来引用这个变量的值 -->
+	  		<!-- bind：可以将入参的某个值绑定到一个变量中，方便后来引用这个变量的值
+	  			下面的这个bind标签，value中的 lastName是入参对象中的值，前后品尚 %，就作为 _lastName 这个变量的值，该sql后面的
+	  			语句中，可以拿bind标签中的 _lastName这个变量来使用。
+	  		-->
 	  		<bind name="_lastName" value="'%'+lastName+'%'"/>
+
 	  		<if test="_databaseId=='mysql'">
 	  			select * from tbl_employee
 	  			<if test="_parameter!=null">
-	  				where last_name like #{lastName}
+	  				where last_name like #{_lastName}
 	  			</if>
 	  		</if>
 	  		<if test="_databaseId=='oracle'">
