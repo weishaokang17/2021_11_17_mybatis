@@ -41,15 +41,10 @@ import java.util.List;
  */
 public class MyBatisTest {
 
-
-
-	public SqlSessionFactory getSqlSessionFactory() throws IOException {
-		String resource = "mybatis-config.xml";
-		InputStream inputStream = Resources.getResourceAsStream(resource);
-		return new SqlSessionFactoryBuilder().build(inputStream);
-	}
-
-
+	/**
+	 * 自动生成 实体类、mapper文件的方法
+	 * @throws Exception
+	 */
 	@Test
 	public void testMbg() throws Exception {
 		List<String> warnings = new ArrayList<String>();
@@ -63,6 +58,16 @@ public class MyBatisTest {
 				callback, warnings);
 		myBatisGenerator.generate(null);
 	}
+
+
+	public SqlSessionFactory getSqlSessionFactory() throws IOException {
+		String resource = "mybatis-config.xml";
+		InputStream inputStream = Resources.getResourceAsStream(resource);
+		return new SqlSessionFactoryBuilder().build(inputStream);
+	}
+
+
+
 
 
 

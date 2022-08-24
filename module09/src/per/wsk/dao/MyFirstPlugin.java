@@ -18,6 +18,8 @@ import java.util.Properties;
  */
 @Intercepts(
         {
+                //这里指的是 该拦截器拦截的类是 StatementHandler，拦截的方法是 parameterize，args是指要拦截的方法的入参的类型，因为很多类中
+                //有方法名相同的重载的方法，所以，仅在前面指明拦截的方法名，并不能很准确的确定拦截的是哪个方法。
                 @Signature(type= StatementHandler.class,method="parameterize",args=java.sql.Statement.class)
         })
 public class MyFirstPlugin implements Interceptor {
@@ -40,6 +42,7 @@ public class MyFirstPlugin implements Interceptor {
         System.out.println("sql语句用的参数是："+value);
         //修改完sql语句要用的参数
         metaObject.setValue("parameterHandler.parameterObject", 11);
+
         //执行目标方法
         Object proceed = invocation.proceed();
         //返回执行后的返回值

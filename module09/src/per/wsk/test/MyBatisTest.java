@@ -97,8 +97,8 @@ public class MyBatisTest {
 	/**
 	 * 插件编写：
 	 * 1、编写Interceptor的实现类
-	 * 2、使用@Intercepts注解完成插件签名
-	 * 3、将写好的插件注册到全局配置文件中
+	 * 2、使用@Intercepts注解完成插件签名，编写这个接口的实现类
+	 * 3、将写好的插件注册到全局配置文件中 详见 mybatis-config.xml
 	 *
 	 */
 	@Test
