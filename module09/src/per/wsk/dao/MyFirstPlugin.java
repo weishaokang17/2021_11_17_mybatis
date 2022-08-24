@@ -32,7 +32,8 @@ public class MyFirstPlugin implements Interceptor {
     public Object intercept(Invocation invocation) throws Throwable {
         // TODO Auto-generated method stub
         System.out.println("MyFirstPlugin...intercept:"+invocation.getMethod());
-        //动态的改变一下sql运行的参数：以前1号员工，实际从数据库查询3号员工
+
+        //以下这段代码，是改变一下sql运行的参数：以前1号员工，实际从数据库查询11号员工
         Object target = invocation.getTarget();
         System.out.println("当前拦截到的对象："+target);
         //拿到：StatementHandler==>ParameterHandler===>parameterObject
