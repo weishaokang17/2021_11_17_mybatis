@@ -10,6 +10,7 @@
 	<!--二级缓存-->
 	<!-- <cache eviction="FIFO" flushInterval="60000" readOnly="false" size="1024"></cache> -->
 	<!--<cache></cache>  只有一个cache标签，里面什么都不写，那么cache标签的各属性都取默认的值-->
+
 	<!--
 	eviction:缓存的回收策略：
 		• LRU – 最近最少使用的：移除最长时间不被使用的对象。
