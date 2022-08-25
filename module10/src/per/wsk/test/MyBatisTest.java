@@ -96,8 +96,6 @@ public class MyBatisTest {
 
 			List<Employee> emps = mapper.getEmps();
 
-
-
 			//传入要连续显示多少页
 			PageInfo<Employee> info = new PageInfo<>(emps, 5);
 			for (Employee employee : emps) {
