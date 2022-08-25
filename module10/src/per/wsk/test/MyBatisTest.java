@@ -141,9 +141,10 @@ public class MyBatisTest {
 			}
 			openSession.commit();
 			long end = System.currentTimeMillis();
-			//批量：（预编译sql一次==>设置参数===>10000次===>执行（1次））
-			//Parameters: 616c1(String), b(String), 1(String)==>4598
-			//非批量：（预编译sql=设置参数=执行）==》10000    10200
+			//批量：（预编译sql一次==>设置参数10000次===>执行（1次））
+			//Parameters: 616c1(String), b(String), 1(String)==>共花费4598ms
+
+			//非批量：（预编译sql=设置参数=执行）==》前面整个过程循环10000次   共花费10200ms
 			System.out.println("执行时长："+(end-start));
 		}finally{
 			openSession.close();
